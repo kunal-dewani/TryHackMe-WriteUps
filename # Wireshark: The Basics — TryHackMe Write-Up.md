@@ -40,8 +40,7 @@ the foundation everything else sits on.
 |---|---|
 | Wireshark | Provided in TryHackMe VM |
 | Exercise.pcapng | Provided capture file (used for questions) |
-| http1.pcapng | Provided capture file (used to follow along with
-screenshots) |  
+| http1.pcapng | Provided capture file (used to follow along with screenshots) |  
 
 ---
 ## Key Concepts
