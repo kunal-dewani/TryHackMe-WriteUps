@@ -34,13 +34,15 @@ the foundation everything else sits on.
 - Apply and use display filters and colour rules
 - Export objects (files) embedded within packet captures
 ---
-## Tools Used
+## Tools Used  
+
 | Tool | Version / Notes |
 |---|---|
 | Wireshark | Provided in TryHackMe VM |
 | Exercise.pcapng | Provided capture file (used for questions) |
 | http1.pcapng | Provided capture file (used to follow along with
-screenshots) |
+screenshots) |  
+
 ---
 ## Key Concepts
 ### What is Wireshark?
