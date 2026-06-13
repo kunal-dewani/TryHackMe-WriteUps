@@ -1,9 +1,9 @@
 # Wireshark: The Basics — TryHackMe Write-Up
-Platform: TryHackMe
-Path: Cybersecurity 101 (Networking)
-Difficulty: Easy
-Date Completed: 10-06-2026
-Room Link: https://tryhackme.com/room/wiresharkthebasics
+Platform: TryHackMe  
+Path: Cybersecurity 101 (Networking)  
+Difficulty: Easy  
+Date Completed: 10-06-2026  
+Room Link: https://tryhackme.com/room/wiresharkthebasics  
 Room Type: Guided (Theory with Walkthrough and hands-on questions with attached VM)
 ---
 ## Room Summary
