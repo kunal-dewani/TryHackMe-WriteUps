@@ -6,7 +6,7 @@
   Date Completed: 10-06-2026  
   Room Link: https://tryhackme.com/room/wiresharkthebasics  
   Room Type: Guided (Theory with Walkthrough and hands-on questions with attached VM)
-</p>
+</p>  
 ---
 ## Room Summary
 This room introduces Wireshark — the industry-standard open-source
