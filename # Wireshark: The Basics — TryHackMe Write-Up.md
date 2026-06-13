@@ -8,19 +8,22 @@
   <b>Room Type:</b> Guided (Theory with Walkthrough and hands-on questions with attached VM)<br>
   
 ---
-## Room Summary
+## Room Summary  
 This room introduces Wireshark — the industry-standard open-source
 network packet analyser — and teaches you how to navigate its interface,
 load packet captures (PCAPs), dissect packets layer by layer, navigate
 through traffic, and apply basic filtering. It is part of the Network
 Security & Traffic Analysis module and directly relevant to day-to-day
-SOC analyst work.
-**Why this matters in the real world:** Every SOC analyst needs to be
-comfortable reading packet captures. Whether you're investigating a
-phishing campaign, spotting lateral movement, or triaging a potential
-data exfiltration event, Wireshark (or a tool built on the same
+SOC analyst work.  
+
+**Why this matters in the real world:**  
+
+Every SOC analyst needs to be comfortable reading packet captures. 
+Whether you're investigating a phishing campaign, spotting lateral movement, 
+or triaging a potential data exfiltration event, Wireshark (or a tool built on the same
 libraries like NetworkMiner or Zeek) is in the toolkit. This room builds
 the foundation everything else sits on.
+
 ---
 ## Learning Objectives
 - Understand what Wireshark is and what it can (and cannot) do
