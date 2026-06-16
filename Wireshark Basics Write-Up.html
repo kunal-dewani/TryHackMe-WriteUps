@@ -1,0 +1,4184 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+<link rel=File-List href="Wireshark%20Basics%20Write-Up.md.fld/filelist.xml">
+<link rel=Edit-Time-Data
+href="Wireshark%20Basics%20Write-Up.md.fld/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Kunal Dewani</o:Author>
+  <o:LastAuthor>Kunal Dewani</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>24</o:TotalTime>
+  <o:Created>2026-06-16T23:42:00Z</o:Created>
+  <o:LastSaved>2026-06-16T23:42:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>1643</o:Words>
+  <o:Characters>9371</o:Characters>
+  <o:Lines>78</o:Lines>
+  <o:Paragraphs>21</o:Paragraphs>
+  <o:CharactersWithSpaces>10993</o:CharactersWithSpaces>
+  <o:Version>16.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="Wireshark%20Basics%20Write-Up.md.fld/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Wireshark%20Basics%20Write-Up.md.fld/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-AU</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="376">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Link"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:77;
+	mso-generic-font-family:decorative;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 -2147483647 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-469750017 -1073683329 9 0 511 0;}
+@font-face
+	{font-family:Menlo;
+	panose-1:2 11 6 9 3 8 4 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-436198657 -771687941 33554472 0 479 0;}
+@font-face
+	{font-family:"Source Sans Pro";
+	panose-1:2 11 5 3 3 4 3 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1610613495 33554433 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:18.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:20.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-font-kerning:0pt;
+	font-weight:normal;}
+h2
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:8.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:16.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:normal;}
+h3
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:8.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:normal;}
+h4
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
+	mso-style-next:Normal;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:2.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:normal;
+	font-style:italic;}
+h5
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
+	mso-style-next:Normal;
+	margin-top:4.0pt;
+	margin-right:0cm;
+	margin-bottom:2.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:normal;}
+h6
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
+	mso-style-next:Normal;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:6;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 7 Char";
+	mso-style-next:Normal;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:7;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 8 Char";
+	mso-style-next:Normal;
+	margin:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:8;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#272727;
+	mso-themecolor:text1;
+	mso-themetint:216;
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 9 Char";
+	mso-style-next:Normal;
+	margin:0cm;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:9;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#272727;
+	mso-themecolor:text1;
+	mso-themetint:216;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;
+	letter-spacing:.75pt;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#96607D;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0cm;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Quote Char";
+	mso-style-next:Normal;
+	margin-top:8.0pt;
+	margin-right:0cm;
+	margin-bottom:8.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Intense Quote Char";
+	mso-style-next:Normal;
+	margin-top:18.0pt;
+	margin-right:43.2pt;
+	margin-bottom:18.0pt;
+	margin-left:43.2pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	border:none;
+	mso-border-top-alt:solid #0F4761 .5pt;
+	mso-border-top-themecolor:accent1;
+	mso-border-top-themeshade:191;
+	mso-border-bottom-alt:solid #0F4761 .5pt;
+	mso-border-bottom-themecolor:accent1;
+	mso-border-bottom-themeshade:191;
+	padding:0cm;
+	mso-padding-alt:10.0pt 0cm 10.0pt 0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{mso-style-priority:21;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-style:italic;}
+span.MsoIntenseReference
+	{mso-style-priority:32;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	font-variant:small-caps;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	font-weight:bold;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:20.0pt;
+	mso-bidi-font-size:20.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 5";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 6";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;
+	font-style:italic;}
+span.Heading7Char
+	{mso-style-name:"Heading 7 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 7";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;}
+span.Heading8Char
+	{mso-style-name:"Heading 8 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 8";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#272727;
+	mso-themecolor:text1;
+	mso-themetint:216;
+	font-style:italic;}
+span.Heading9Char
+	{mso-style-name:"Heading 9 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 9";
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#272727;
+	mso-themecolor:text1;
+	mso-themetint:216;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:28.0pt;
+	mso-bidi-font-size:28.0pt;
+	font-family:"Aptos Display",sans-serif;
+	mso-ascii-font-family:"Aptos Display";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Aptos Display";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Subtitle;
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#595959;
+	mso-themecolor:text1;
+	mso-themetint:166;
+	letter-spacing:.75pt;}
+span.QuoteChar
+	{mso-style-name:"Quote Char";
+	mso-style-priority:29;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Quote;
+	color:#404040;
+	mso-themecolor:text1;
+	mso-themetint:191;
+	font-style:italic;}
+span.IntenseQuoteChar
+	{mso-style-name:"Intense Quote Char";
+	mso-style-priority:30;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Intense Quote";
+	color:#0F4761;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-style:italic;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";
+	mso-font-kerning:0pt;
+	mso-ligatures:none;
+	mso-fareast-language:EN-GB;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:"Aptos",sans-serif;
+	mso-ascii-font-family:Aptos;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Aptos;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Aptos;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:65878308;
+	mso-list-template-ids:-911603310;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:106123277;
+	mso-list-template-ids:-1949374662;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:303196055;
+	mso-list-template-ids:-1637863724;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:404958268;
+	mso-list-template-ids:-2145098758;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l3:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:788012692;
+	mso-list-template-ids:-1209245300;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l4:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:788475160;
+	mso-list-template-ids:1918374392;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:861674302;
+	mso-list-template-ids:-1031925520;}
+@list l6:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l6:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7
+	{mso-list-id:1210342222;
+	mso-list-template-ids:502414130;}
+@list l7:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l7:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l8
+	{mso-list-id:1297682458;
+	mso-list-template-ids:-1418298822;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l8:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l8:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l8:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l9
+	{mso-list-id:1343701870;
+	mso-list-template-ids:1190428926;}
+@list l9:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l9:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10
+	{mso-list-id:1354720065;
+	mso-list-template-ids:-550605156;}
+@list l10:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l10:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l11
+	{mso-list-id:1625692255;
+	mso-list-template-ids:1709080584;}
+@list l11:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l11:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l11:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l11:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12
+	{mso-list-id:1672291422;
+	mso-list-template-ids:-666468100;}
+@list l12:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l12:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l12:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l12:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13
+	{mso-list-id:1736507812;
+	mso-list-template-ids:1054222920;}
+@list l13:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l13:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l13:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l13:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Wingdings;}
+@list l14
+	{mso-list-id:1880363140;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1480976202 134807553 134807555 134807557 134807553 134807555 134807557 134807553 134807555 134807557;}
+@list l14:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:72.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l14:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:108.0pt;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l14:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:144.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l14:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:180.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l14:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:216.0pt;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l14:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:252.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l14:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:288.0pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l14:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:324.0pt;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l14:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:360.0pt;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l15
+	{mso-list-id:1923568647;
+	mso-list-template-ids:-1114488950;}
+@list l15:level1
+	{mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l15:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;
+	mso-ascii-font-family:Aptos;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Aptos;
+	mso-hansi-theme-font:minor-latin;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;
+	mso-fareast-language:EN-US;}
+table.MsoTableGridLight
+	{mso-style-name:"Table Grid Light";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:40;
+	mso-style-unhide:no;
+	border:solid #BFBFBF 1.0pt;
+	mso-border-themecolor:background1;
+	mso-border-themeshade:191;
+	mso-border-alt:solid #BFBFBF .5pt;
+	mso-border-themecolor:background1;
+	mso-border-themeshade:191;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid #BFBFBF;
+	mso-border-insideh-themecolor:background1;
+	mso-border-insideh-themeshade:191;
+	mso-border-insidev:.5pt solid #BFBFBF;
+	mso-border-insidev-themecolor:background1;
+	mso-border-insidev-themeshade:191;
+	mso-para-margin:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;
+	mso-ascii-font-family:Aptos;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Aptos;
+	mso-hansi-theme-font:minor-latin;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;
+	mso-fareast-language:EN-US;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-AU link=blue vlink="#96607D" style='tab-interval:36.0pt;
+word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;mso-outline-level:1;background:
+white'><b><span style='font-size:24.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328;mso-font-kerning:18.0pt'>Wireshark: The Basics — <span
+class=SpellE>TryHackMe</span> Write-Up<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><span
+class=GramE><b><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Platform:</span></b><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>:</span></span><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'> <span class=SpellE>TryHackMe</span><br>
+<span class=GramE><b>Path:</b>:</span> Cybersecurity 101 (Networking)<br>
+<span class=GramE><b>Difficulty:</b>:</span> Easy<br>
+<b>Date Completed:</b>&nbsp;10-06-2026<br>
+<b>Room Link:</b>&nbsp;<a href="https://tryhackme.com/room/wiresharkthebasics"><span
+style='color:#0969DA'>https://tryhackme.com/room/wiresharkthebasics</span></a><br>
+<b>Room Type:</b>&nbsp;Guided (Theory with Walkthrough and hands-on questions
+with attached VM)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><b><u><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Important Note:</span></u></b><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'> This is my first
+attempt at a write-up. Therefore, I used claude.ai to get a better
+understanding of how the language must be with context to a walkthrough room,
+while following the ethical guidelines of not posting the answers, i.e., flags,
+directly. Therefore, this room includes steps for some and not all questions.<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:2;background:white'><b><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Room
+Summary<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>This room introduces
+Wireshark — the industry-standard open-source network packet analyser — and
+teaches you how to navigate its interface, load packet captures (PCAPs),
+dissect packets layer by layer, navigate through traffic, and apply basic
+filtering. It is part of the Network Security &amp; Traffic Analysis module and
+directly relevant to day-to-day SOC analyst work.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><b><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Why this matters in the
+real world:</span></b><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Every SOC analyst needs
+to be comfortable reading packet captures. Whether you're investigating a
+phishing campaign, spotting lateral movement, or triaging a potential data
+exfiltration event, Wireshark (or a tool built on the same libraries <span
+class=GramE>like</span> <span class=SpellE>NetworkMiner</span> or Zeek) is in
+the toolkit. This room builds the foundation everything else sits on.<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:2;background:white'><b><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Learning
+Objectives<o:p></o:p></span></b></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Understand what Wireshark is and
+     what it can (and cannot) do<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Navigate the Wireshark GUI
+     confidently<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Open and inspect PCAP/PCAPNG
+     files<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Dissect packets across OSI
+     layers<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Navigate to specific packets
+     using search, go-to, and bookmarking<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Apply and use display filters
+     and colour rules<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l11 level1 lfo1;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Export objects (files) embedded
+     within packet captures<o:p></o:p></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:2;background:white'><b><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Tools
+Used<o:p></o:p></span></b></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:1184'>
+ <thead>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+   <td style='border:solid #D1D9E0 1.0pt;mso-border-alt:solid #D1D9E0 .75pt;
+   background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>Tool</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>Version / Notes</span><o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Wireshark</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Provided in <span class=SpellE>TryHackMe</span> VM</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:#F6F8FA;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span class=SpellE><span
+  style='color:black;mso-color-alt:windowtext'>Exercise.pcapng</span></span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Provided capture file (used for questions)</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>http1.pcapng</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Provided capture file (used to follow along with
+  screenshots)</span><o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:2;background:white'><b><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Key
+Concepts<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:3;background:white'><b><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>What
+is Wireshark?<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Wireshark is an&nbsp;<b>open-source,
+cross-platform packet analyser</b>. It can:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l4 level1 lfo2;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Capture live network traffic
+     from an interface<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l4 level1 lfo2;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Open and analyse saved capture
+     files <span class=GramE>(<span style='font-size:10.0pt;font-family:Menlo'>.<span
+     class=SpellE>pcap</span></span>,&nbsp;<span style='font-size:10.0pt;
+     font-family:Menlo'>.<span class=SpellE>pcapng</span></span></span>)<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l4 level1 lfo2;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>Dissect hundreds of protocols
+     automatically&nbsp;<b>Important distinction:</b>&nbsp;Wireshark is NOT an
+     Intrusion Detection System (IDS). It captures and presents data — it does
+     NOT alert you. The analyst's expertise is what turns raw packets into
+     actionable intelligence.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:3;background:white'><b><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>The
+Wireshark Interface<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+background:white'><span style='font-family:"Source Sans Pro",sans-serif;
+color:#151C2B'>Wireshark&nbsp;GUI&nbsp;opens with a single all-in-one page,
+which helps users investigate the traffic in multiple ways. At first glance,
+five sections stand out.<o:p></o:p></span></p>
+
+<table class=MsoTableGridLight border=1 cellspacing=0 cellpadding=0 width=614
+ style='width:460.65pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid #BFBFBF .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+ 191;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=123 valign=top style='width:92.15pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;mso-border-alt:
+  solid #BFBFBF .5pt;mso-border-themecolor:background1;mso-border-themeshade:
+  191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Toolbar</b><o:p></o:p></p>
+  </td>
+  <td width=491 valign=top style='width:368.5pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;border-left:none;
+  mso-border-left-alt:solid #BFBFBF .5pt;mso-border-left-themecolor:background1;
+  mso-border-left-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>The main toolbar contains multiple menus and shortcuts for
+  packet sniffing and processing, including filtering, sorting, summarising,
+  exporting and merging.&nbsp;<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=123 valign=top style='width:92.15pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;border-top:none;
+  mso-border-top-alt:solid #BFBFBF .5pt;mso-border-top-themecolor:background1;
+  mso-border-top-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Display Filter
+  Bar</b><o:p></o:p></p>
+  </td>
+  <td width=491 valign=top style='width:368.5pt;border-top:none;border-left:
+  none;border-bottom:solid #BFBFBF 1.0pt;mso-border-bottom-themecolor:background1;
+  mso-border-bottom-themeshade:191;border-right:solid #BFBFBF 1.0pt;mso-border-right-themecolor:
+  background1;mso-border-right-themeshade:191;mso-border-top-alt:solid #BFBFBF .5pt;
+  mso-border-top-themecolor:background1;mso-border-top-themeshade:191;
+  mso-border-left-alt:solid #BFBFBF .5pt;mso-border-left-themecolor:background1;
+  mso-border-left-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>The main query and filtering section.<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=123 valign=top style='width:92.15pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;border-top:none;
+  mso-border-top-alt:solid #BFBFBF .5pt;mso-border-top-themecolor:background1;
+  mso-border-top-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Recent Files</b><o:p></o:p></p>
+  </td>
+  <td width=491 valign=top style='width:368.5pt;border-top:none;border-left:
+  none;border-bottom:solid #BFBFBF 1.0pt;mso-border-bottom-themecolor:background1;
+  mso-border-bottom-themeshade:191;border-right:solid #BFBFBF 1.0pt;mso-border-right-themecolor:
+  background1;mso-border-right-themeshade:191;mso-border-top-alt:solid #BFBFBF .5pt;
+  mso-border-top-themecolor:background1;mso-border-top-themeshade:191;
+  mso-border-left-alt:solid #BFBFBF .5pt;mso-border-left-themecolor:background1;
+  mso-border-left-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>List of the recently investigated files. You can recall
+  listed files with a double-click.&nbsp;<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=123 valign=top style='width:92.15pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;border-top:none;
+  mso-border-top-alt:solid #BFBFBF .5pt;mso-border-top-themecolor:background1;
+  mso-border-top-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Capture Filter
+  and Interfaces</b><o:p></o:p></p>
+  </td>
+  <td width=491 valign=top style='width:368.5pt;border-top:none;border-left:
+  none;border-bottom:solid #BFBFBF 1.0pt;mso-border-bottom-themecolor:background1;
+  mso-border-bottom-themeshade:191;border-right:solid #BFBFBF 1.0pt;mso-border-right-themecolor:
+  background1;mso-border-right-themeshade:191;mso-border-top-alt:solid #BFBFBF .5pt;
+  mso-border-top-themecolor:background1;mso-border-top-themeshade:191;
+  mso-border-left-alt:solid #BFBFBF .5pt;mso-border-left-themecolor:background1;
+  mso-border-left-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Capture filters and available sniffing points (network
+  interfaces).&nbsp; The network interface is the connection point between a
+  computer and a network. The software connection (e.g., lo, eth0 and ens33)
+  enables networking hardware.<o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td width=123 valign=top style='width:92.15pt;border:solid #BFBFBF 1.0pt;
+  mso-border-themecolor:background1;mso-border-themeshade:191;border-top:none;
+  mso-border-top-alt:solid #BFBFBF .5pt;mso-border-top-themecolor:background1;
+  mso-border-top-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Status Bar</b><o:p></o:p></p>
+  </td>
+  <td width=491 valign=top style='width:368.5pt;border-top:none;border-left:
+  none;border-bottom:solid #BFBFBF 1.0pt;mso-border-bottom-themecolor:background1;
+  mso-border-bottom-themeshade:191;border-right:solid #BFBFBF 1.0pt;mso-border-right-themecolor:
+  background1;mso-border-right-themeshade:191;mso-border-top-alt:solid #BFBFBF .5pt;
+  mso-border-top-themecolor:background1;mso-border-top-themeshade:191;
+  mso-border-left-alt:solid #BFBFBF .5pt;mso-border-left-themecolor:background1;
+  mso-border-left-themeshade:191;mso-border-alt:solid #BFBFBF .5pt;mso-border-themecolor:
+  background1;mso-border-themeshade:191;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Tool status, profile and numeric packet information.<o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b><span style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Packet Dissection<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><span style='font-family:"Source Sans Pro",sans-serif;
+color:#151C2B;background:white'>Packet dissection is also known as protocol
+dissection, which investigates packet details by decoding available protocols
+and fields. Wireshark supports a long list of protocols for dissection, and you
+can also write your dissection scripts.</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:"Source Sans Pro",sans-serif;
+color:#151C2B;background:white'><o:p>&nbsp;</o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>When you click a packet, Wireshark breaks it into layers
+matching the following OSI model:<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:1184;box-sizing: border-box;
+ border-spacing: 0px;font-variant:tabular-nums;width:max-content;max-width:
+ 100%;overflow:auto'>
+ <thead style='box-sizing: border-box'>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;box-sizing: border-box;
+   border-top:rgba(209, 217, 224, 0.7)'>
+   <td style='border:solid #D1D9E0 1.0pt;mso-border-alt:solid #D1D9E0 .75pt;
+   background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'><markdown-accessiblity-table data-catalyst="" style="box-sizing: border-box; display: block; color: rgb(31, 35, 40); font-family: &quot;Mona Sans VF&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Layer</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>OSI Name</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>Wireshark Label</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>What You See</span><o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>7</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Application</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>HTTP, DNS, FTP...</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Request/response data</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:#F6F8FA;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>4</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Transport</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>TCP / UDP</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Ports, sequence numbers, flags</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>3</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Network</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>IPv4 / IPv6</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>IP addresses, TTL</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:#F6F8FA;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>2</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Data Link</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Ethernet II</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>MAC addresses</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;mso-yfti-lastrow:yes;box-sizing: border-box;
+  border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>1</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Physical</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Frame</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Frame length, timestamps</span><o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>This is why knowing the OSI model isn't just theory — it's
+how you navigate Wireshark.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b><span style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Packet Filtering<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><span style='font-family:"Source Sans Pro",sans-serif;
+color:#151C2B;background:white'>Wireshark has a powerful filter engine that
+helps analysts to narrow down the traffic and focus on the event of interest.
+Wireshark has two types of filtering approaches: capture and display filters.
+Capture filters are used for&nbsp;</span><strong style='box-sizing: border-box;
+scrollbar-width: thin;scrollbar-color: rgb(212, 216, 223) transparent;
+font-variant-ligatures: normal;font-variant-caps: normal;orphans: 2;widows: 2;
+-webkit-text-stroke-width: 0px;text-decoration-thickness: initial;text-decoration-style: initial;
+text-decoration-color: initial;word-spacing:0px'><span style='font-family:"Source Sans Pro",sans-serif'>&quot;capturing&quot;</span></strong><span
+style='font-variant-ligatures: normal;font-variant-caps: normal;orphans: 2;
+widows: 2;-webkit-text-stroke-width: 0px;text-decoration-thickness: initial;
+text-decoration-style: initial;text-decoration-color: initial;float:none;
+word-spacing:0px'>&nbsp;only the packets valid for the used filter. Display
+filters are used for&nbsp;</span><strong style='box-sizing: border-box;
+scrollbar-width: thin;scrollbar-color: rgb(212, 216, 223) transparent;
+font-variant-ligatures: normal;font-variant-caps: normal;orphans: 2;widows: 2;
+-webkit-text-stroke-width: 0px;text-decoration-thickness: initial;text-decoration-style: initial;
+text-decoration-color: initial;word-spacing:0px'><span style='font-family:"Source Sans Pro",sans-serif'>&quot;viewing&quot;</span></strong><span
+style='font-variant-ligatures: normal;font-variant-caps: normal;orphans: 2;
+widows: 2;-webkit-text-stroke-width: 0px;text-decoration-thickness: initial;
+text-decoration-style: initial;text-decoration-color: initial;float:none;
+word-spacing:0px'>&nbsp;the packets valid for the used filter.&nbsp;</span></span><b><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=612
+ style='width:458.75pt;background:white;border-collapse:collapse;mso-yfti-tbllook:
+ 1184'>
+ <thead>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+   <td width=85 style='width:64.1pt;border:solid #D1D9E0 1.0pt;mso-border-alt:
+   solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Type<o:p></o:p></span></b></p>
+   </td>
+   <td width=150 style='width:112.7pt;border:solid #D1D9E0 1.0pt;border-left:
+   none;mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='font-family:"Segoe UI",sans-serif;color:#1F2328'>When <span
+   class=GramE>Applied</span><o:p></o:p></span></b></p>
+   </td>
+   <td width=158 style='width:118.2pt;border:solid #D1D9E0 1.0pt;border-left:
+   none;mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Purpose<o:p></o:p></span></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Example<o:p></o:p></span></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td width=85 style='width:64.1pt;border:solid #D1D9E0 1.0pt;border-top:none;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><strong style='box-sizing: border-box'><span
+  style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Capture Filter</span></strong><span
+  style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></p>
+  </td>
+  <td width=150 style='width:112.7pt;border-top:none;border-left:none;
+  border-bottom:solid #D1D9E0 1.0pt;border-right:solid #D1D9E0 1.0pt;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-left-alt:solid #D1D9E0 .75pt;
+  mso-border-alt:solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt;
+  box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Before/during
+  capture<o:p></o:p></span></p>
+  </td>
+  <td width=158 style='width:118.2pt;border-top:none;border-left:none;
+  border-bottom:solid #D1D9E0 1.0pt;border-right:solid #D1D9E0 1.0pt;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-left-alt:solid #D1D9E0 .75pt;
+  mso-border-alt:solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt;
+  box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Limits
+  what gets recorded<o:p></o:p></span></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><code><span style='font-size:10.0pt;font-family:Menlo;
+  color:#1F2328'>port 80</span></code><span style='font-family:"Segoe UI",sans-serif;
+  color:#1F2328'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes;box-sizing: border-box;
+  border-top:rgba(209, 217, 224, 0.7)'>
+  <td width=85 style='width:64.1pt;border:solid #D1D9E0 1.0pt;border-top:none;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><strong><span style='font-family:"Segoe UI",sans-serif;
+  color:#1F2328'>Display Filter</span></strong><span style='font-family:"Segoe UI",sans-serif;
+  color:#1F2328'><o:p></o:p></span></p>
+  </td>
+  <td width=150 style='width:112.7pt;border-top:none;border-left:none;
+  border-bottom:solid #D1D9E0 1.0pt;border-right:solid #D1D9E0 1.0pt;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-left-alt:solid #D1D9E0 .75pt;
+  mso-border-alt:solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt;
+  box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>After
+  capture, on existing PCAP<o:p></o:p></span></p>
+  </td>
+  <td width=158 style='width:118.2pt;border-top:none;border-left:none;
+  border-bottom:solid #D1D9E0 1.0pt;border-right:solid #D1D9E0 1.0pt;
+  mso-border-top-alt:solid #D1D9E0 .75pt;mso-border-left-alt:solid #D1D9E0 .75pt;
+  mso-border-alt:solid #D1D9E0 .75pt;padding:4.5pt 9.75pt 4.5pt 9.75pt;
+  box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Limits
+  what you see<o:p></o:p></span></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><code><span style='font-size:10.0pt;font-family:Menlo;
+  color:#1F2328'>http</span></code><span style='font-family:"Segoe UI",sans-serif;
+  color:#1F2328'>&nbsp;or&nbsp;</span><span class=SpellE><span class=GramE><code
+  style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+  background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+  style='font-size:10.0pt;font-family:Menlo;color:#1F2328'>ip.addr</span></code></span></span><code><span
+  style='font-size:10.0pt;font-family:Menlo;color:#1F2328'>==10.0.0.1</span></code><span
+  style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:3;background:white'><b><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Colour
+Coding<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;background:white'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Wireshark colour-codes
+packets by protocol and state to help you spot things fast:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l8 level1 lfo3;tab-stops:list 36.0pt;background:white'><b><span
+     style='font-family:"Segoe UI",sans-serif'>Green</span></b><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— HTTP traffic<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l8 level1 lfo3;tab-stops:list 36.0pt;background:white'><b><span
+     style='font-family:"Segoe UI",sans-serif'>Light blue</span></b><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— UDP<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l8 level1 lfo3;tab-stops:list 36.0pt;background:white'><b><span
+     style='font-family:"Segoe UI",sans-serif'>Dark blue</span></b><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— DNS<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l8 level1 lfo3;tab-stops:list 36.0pt;background:white'><b><span
+     style='font-family:"Segoe UI",sans-serif'>Black with red text</span></b><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— TCP issues (resets,
+     errors)<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l8 level1 lfo3;tab-stops:list 36.0pt;background:white'><b><span
+     style='font-family:"Segoe UI",sans-serif'>Yellow</span></b><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— Windows-specific traffic
+     (SMB, etc.) You can create custom colour rules to highlight traffic of
+     interest.<o:p></o:p></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:18.0pt;margin-right:0cm;margin-bottom:
+12.0pt;margin-left:0cm;mso-outline-level:2;background:white'><b><span
+style='font-size:18.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Tasks
+Walkthrough<o:p></o:p></span></b></p>
+
+<h3 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><span style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Task 1 — Introduction<o:p></o:p></span></h3>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>This
+task establishes that the room uses two files provided in the VM:<o:p></o:p></span></p>
+
+<ul type=disc style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l3 level1 lfo4;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><code style='box-sizing: border-box;tab-size: 4;
+     white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+     border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo'>http1.pcapng</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— used to follow along
+     with the screenshots in the room text<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo4;tab-stops:list 36.0pt;background:white;box-sizing: border-box'><span
+     class=SpellE><code style='box-sizing: border-box;tab-size: 4;white-space:
+     break-spaces;background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Exercise.pcapng</span></code></span><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— used to answer all
+     questions&nbsp;<strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Key takeaway:</span></strong>&nbsp;Always
+     check which file a task expects. Mixing them up is a common mistake.<o:p></o:p></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h3 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box' tabindex=-1><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Task 2
+— Tool Overview<o:p></o:p></span></h3>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>What it covers:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;The GUI layout,
+the five main panes, how to open files, and colouring rules.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Steps I took:</span></strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p></o:p></span></p>
+
+<ol start=1 type=1 style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l6 level1 lfo6;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Opened
+     Wireshark from the VM desktop<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l6 level1 lfo6;tab-stops:list 36.0pt;background:white;box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Used&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>File &gt; Open</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;to load&nbsp;</span><span
+     class=SpellE><code style='box-sizing: border-box;tab-size: 4;white-space:
+     break-spaces;background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Exercise.pcapng</span></code></span><span
+     style='font-family:"Segoe UI",sans-serif'><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l6 level1 lfo6;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Familiarised
+     myself with Packet List, Packet Details, and Packet Bytes panes<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l6 level1 lfo6;tab-stops:list 36.0pt;background:white;box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Explored&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>View &gt; Colouring Rules</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;to see default colour
+     assignments&nbsp;<o:p></o:p></span></li>
+</ol>
+
+<p class=MsoNormal style='mso-margin-bottom-alt:auto;margin-left:18.0pt;
+background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Key action — Capture File Properties:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;</span><code
+style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;background-color:
+rgba(129, 139, 152, 0.12);border-radius: 6px'><span style='font-size:10.0pt;
+font-family:Menlo;color:#1F2328'>Statistics &gt; Capture File Properties</span></code><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;gives you a
+summary of the PCAP including:<o:p></o:p></span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l2 level1 lfo7;tab-stops:list 36.0pt;background:white'><span
+     style='font-family:"Segoe UI",sans-serif'>File hash (SHA256, MD5): useful
+     for file integrity verification<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l2 level1 lfo7;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Capture
+     duration<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l2 level1 lfo7;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Total
+     packet count<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l2 level1 lfo7;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>File
+     comments: <em><span style='font-family:"Segoe UI",sans-serif'>these can
+     contain hidden flags in CTF-style rooms!</span></em><em><span
+     style='font-family:"Segoe UI",sans-serif;font-style:normal'><o:p></o:p></span></em></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h3 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box' tabindex=-1><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Task 3
+— Packet Dissection<o:p></o:p></span></h3>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>What it covers:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;Using the Packet
+Details pane to explore OSI layers within a packet.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Steps I took:</span></strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p></o:p></span></p>
+
+<ol start=1 type=1 style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l9 level1 lfo9;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Loaded&nbsp;</span><span
+     class=SpellE><code style='box-sizing: border-box;tab-size: 4;white-space:
+     break-spaces;background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Exercise.pcapng</span></code></span><span
+     style='font-family:"Segoe UI",sans-serif'><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l9 level1 lfo9;tab-stops:list 36.0pt;background:white;box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Navigated to packet 38 (used&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Go &gt; Go to Packet...</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>, typed&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>38</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>)<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l9 level1 lfo9;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>In
+     the Packet Details pane, expanded each layer in turn<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l9 level1 lfo9;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Reached
+     the&nbsp;<strong style='box-sizing: border-box'><span style='font-family:
+     "Segoe UI",sans-serif'>Application Layer &gt; HTTP</span></strong>&nbsp;section<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l9 level1 lfo9;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Found
+     the markup language used:&nbsp;<strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>XML (<span class=SpellE>eXtensible</span>
+     Markup Language)</span></strong>&nbsp;<strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Lesson learned:</span></strong>&nbsp;The
+     OSI model becomes very concrete when you can expand each layer in
+     Wireshark and see exactly what sits at each level. <o:p></o:p></span></li>
+</ol>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:3.0pt;mso-margin-bottom-alt:
+auto;margin-left:72.0pt;mso-add-space:auto;text-indent:-18.0pt;mso-list:l14 level1 lfo16;
+background:white'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:#1F2328'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Layer 7 had the HTTP request; inside that was the XML payload. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:3.0pt;mso-margin-bottom-alt:
+auto;margin-left:72.0pt;mso-add-space:auto;text-indent:-18.0pt;mso-list:l14 level1 lfo16;
+background:white'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:#1F2328'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Layer 3 had the IP source and destination. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:3.0pt;mso-margin-bottom-alt:
+auto;margin-left:72.0pt;mso-add-space:auto;text-indent:-18.0pt;mso-list:l14 level1 lfo16;
+background:white'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:#1F2328'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Layer 4 had the TCP segment length. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:3.0pt;mso-margin-bottom-alt:
+auto;margin-left:72.0pt;mso-add-space:auto;text-indent:-18.0pt;mso-list:l14 level1 lfo16;
+background:white'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol;color:#1F2328'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Everything from theory was now visible.<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h3 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box' tabindex=-1><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Task 4
+— Packet Navigation<o:p></o:p></span></h3>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>What it covers:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;Finding specific
+packets efficiently using Find, Go To, Bookmarks, and Packet Comments.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Techniques covered:</span></strong><span style='font-family:
+"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:1184;box-sizing: border-box;
+ border-spacing: 0px;font-variant:tabular-nums;width:max-content;max-width:
+ 100%;overflow:auto'>
+ <thead style='box-sizing: border-box'>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;box-sizing: border-box;
+   border-top:rgba(209, 217, 224, 0.7)'>
+   <td style='border:solid #D1D9E0 1.0pt;mso-border-alt:solid #D1D9E0 .75pt;
+   background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'><markdown-accessiblity-table data-catalyst="" style="box-sizing: border-box; display: block; color: rgb(31, 35, 40); font-family: &quot;Mona Sans VF&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Feature</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>How to Access</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>Use Case</span><o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Find Packet</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><code style='box-sizing: border-box;tab-size: 4;
+  white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+  border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo;
+  color:black;mso-color-alt:windowtext'>Edit &gt; Find Packet</span></code><span
+  style='color:black;mso-color-alt:windowtext'>&nbsp;(<span class=SpellE>Ctrl+F</span>)</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Search
+  by display filter, hex, or string</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Go To
+  Packet</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><code style='box-sizing: border-box;tab-size: 4;
+  white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+  border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo;
+  color:black;mso-color-alt:windowtext'>Go &gt; Go to Packet</span></code><span
+  style='color:black;mso-color-alt:windowtext'>&nbsp;(<span class=SpellE>Ctrl+G</span>)</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Jump to
+  a known packet number</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Mark
+  Packet</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Right-click
+  &gt; Mark/Unmark</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Bookmark
+  packets to revisit</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'></markdown-accessiblity-table>Packet
+  Comments</span></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>Right-click
+  &gt; Packet Comment</span></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+  <p class=MsoNormal><span style='color:black;mso-color-alt:windowtext'>View
+  analyst notes embedded in the PCAP</span></p>
+  </td>
+ </tr>
+</table>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p>&nbsp;</o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Steps I took for the string search question:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></p>
+
+<ol start=1 type=1 style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l10 level1 lfo10;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Opened&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Edit &gt; Find Packet</span></code><span
+     style='font-family:"Segoe UI",sans-serif'><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l10 level1 lfo10;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Changed
+     search type to&nbsp;<strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>String</span></strong><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l10 level1 lfo10;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Changed
+     search scope to&nbsp;<strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Packet Details</span></strong><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l10 level1 lfo10;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Searched
+     for&nbsp;</span><code style='box-sizing: border-box;tab-size: 4;
+     white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+     border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo'>r4w</span></code><span
+     style='font-family:"Segoe UI",sans-serif'><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l10 level1 lfo10;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Found
+     the packet and expanded the relevant layer to find the <span class=GramE>artist</span>
+     name&nbsp;<o:p></o:p></span></li>
+</ol>
+
+<p class=MsoNormal style='margin-top:3.0pt;mso-margin-bottom-alt:auto;
+margin-left:36.0pt;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Why this matters operationally:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;In a real
+incident, you might receive a PCAP with thousands of packets. Knowing how to
+search for a specific string (e.g., a malicious user-agent, a known C2 domain,
+a password submitted over HTTP) is the difference between a 2-minute
+investigation and a 2-hour one.<o:p></o:p></span></p>
+
+<p style='margin:0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Steps for the .txt file extraction question:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p></o:p></span></p>
+
+<ol start=1 type=1 style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l15 level1 lfo11;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><code style='box-sizing: border-box;tab-size: 4;
+     white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+     border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo'>File &gt;
+     Export Objects &gt; HTTP</span></code><span style='font-family:"Segoe UI",sans-serif'><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l15 level1 lfo11;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Filtered
+     for&nbsp;</span><code style='box-sizing: border-box;tab-size: 4;
+     white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+     border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo'>.txt</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;in the export dialog<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l15 level1 lfo11;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Saved
+     the file<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l15 level1 lfo11;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>Opened
+     it to find the answer<o:p></o:p></span></li>
+</ol>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h3 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box' tabindex=-1><span
+style='font-size:15.0pt;font-family:"Segoe UI",sans-serif;color:#1F2328'>Task 5
+— Packet Filtering<o:p></o:p></span></h3>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>What it covers:</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;Applying display
+filters, following streams, and exporting objects.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin-top:0cm;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Techniques covered:</span></strong><span style='font-family:
+"Segoe UI",sans-serif;color:#1F2328'>&nbsp;<strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif'>Display Filter syntax examples:</span></strong><o:p></o:p></span></p>
+
+<pre style='background:#F6F8FA;box-sizing: border-box;tab-size: 4;overflow-wrap: normal;
+border-radius: 6px;overflow:auto'><code style='box-sizing: border-box;
+tab-size: 4;background:rgba(0, 0, 0, 0);border-radius: 6px;line-height:inherit;
+overflow-wrap: normal;overflow:visible'><span style='font-family:Menlo;
+color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
+padding:0cm'>http # Show only HTTP packets<o:p></o:p></span></code></pre><pre
+style='background:#F6F8FA'><span class=SpellE><span class=GramE><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'>ip.addr</span></code></span></span><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'> == 10.0.0.1 # Traffic involving this IP<o:p></o:p></span></code></pre><pre
+style='background:#F6F8FA'><span class=SpellE><code><span style='font-family:
+Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
+padding:0cm'>ip.src</span></code></span><code><span style='font-family:Menlo;
+color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
+padding:0cm'> == 10.0.0.1 # Traffic FROM this IP<o:p></o:p></span></code></pre><pre
+style='background:#F6F8FA'><span class=SpellE><span class=GramE><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'>tcp.port</span></code></span></span><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'> == 80 # TCP traffic on port 80<o:p></o:p></span></code></pre><pre
+style='background:#F6F8FA'><code><span style='font-family:Menlo;color:#1F2328;
+border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm'>http and <span
+class=SpellE>ip.src</span> == 10.0.0.1 # Combine filters<o:p></o:p></span></code></pre><pre
+style='background:#F6F8FA'><span class=GramE><code><span style='font-family:
+Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;
+padding:0cm'>!(</span></code></span><span class=SpellE><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'>arp</span></code></span><code><span
+style='font-family:Menlo;color:#1F2328;border:none windowtext 1.0pt;mso-border-alt:
+none windowtext 0cm;padding:0cm'>) # Exclude ARP<o:p></o:p></span></code></pre>
+
+<p style='margin:0cm;background:white;box-sizing: border-box;font-variant-ligatures: normal;
+font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+word-spacing:0px'><strong style='box-sizing: border-box'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p>&nbsp;</o:p></span></strong></p>
+
+<clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="http # Show only HTTP packets
+ip.addr == 10.0.0.1 # Traffic involving this IP
+ip.src == 10.0.0.1 # Traffic FROM this IP
+tcp.port == 80 # TCP traffic on port 80
+http and ip.src == 10.0.0.1 # Combine filters
+!(arp) # Exclude ARP" tabindex="0" role="button" style="box-sizing: border-box; margin: 8px !important; padding: 0px !important; font-size: 14px; font-weight: 500; white-space: nowrap; vertical-align: middle; cursor: pointer; user-select: none; appearance: none; border: 0px; border-radius: 6px; line-height: 20px; display: flex !important; position: relative; color: rgb(9, 105, 218); background-color: rgba(0, 0, 0, 0); box-shadow: none; transition: color 80ms cubic-bezier(0.33, 1, 0.68, 1), background-color 80ms cubic-bezier(0.33, 1, 0.68, 1), box-shadow 80ms cubic-bezier(0.33, 1, 0.68, 1), border-color 80ms cubic-bezier(0.33, 1, 0.68, 1); justify-content: center !important; align-items: center !important; width: 28px; height: 28px;"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon"></svg></clipboard-copy>
+
+<p style='margin:0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Right-click shortcut:</span></strong><span style='font-family:
+"Segoe UI",sans-serif;color:#1F2328'>&nbsp;Right-clicking any field in the
+Packet Details pane and choosing&nbsp;<strong style='box-sizing: border-box'><i><span
+style='font-family:"Segoe UI",sans-serif;font-weight:normal'>Apply as Filter</span></i></strong>&nbsp;will
+auto-build the display filter for you. This is the fastest way to build filters
+when you're not sure of the syntax.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin:0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Following streams:</span></strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>&nbsp;</span><code style='box-sizing: border-box;tab-size: 4;
+white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+style='font-size:10.0pt;font-family:Menlo;color:#1F2328'>Right-click a packet &gt;
+Follow &gt; TCP Stream</span></code><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>&nbsp;reconstructs the full TCP conversation in human-readable
+form. This is invaluable for reading HTTP requests/responses, seeing
+credentials passed in cleartext, or understanding what a session contained.&nbsp;<o:p></o:p></span></p>
+
+<p style='margin:0cm;background:white'><strong><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>Exporting objects (files from the PCAP):</span></strong><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;</span><code
+style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;background-color:
+rgba(129, 139, 152, 0.12);border-radius: 6px'><span style='font-size:10.0pt;
+font-family:Menlo;color:#1F2328'>File &gt; Export Objects &gt; HTTP</span></code><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'>&nbsp;lists all files
+transferred over HTTP in the capture. You can filter by extension, then export
+and inspect them. This is how analysts recover malware, documents, or images
+transferred during an incident.&nbsp;<o:p></o:p></span></p>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h2 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;border-bottom:rgba(209, 217, 224, 0.7)'
+tabindex=-1><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Key
+Takeaways<o:p></o:p></span></h2>
+
+<ol start=1 type=1 style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l7 level1 lfo12;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Wireshark is a viewer, not a
+     detector</span></strong><span style='font-family:"Segoe UI",sans-serif'>&nbsp;—
+     it shows you everything; YOU are the detection engine. The tool is only as
+     good as the analyst using it.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l7 level1 lfo12;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>The OSI model is not just exam
+     theory</span></strong><span style='font-family:"Segoe UI",sans-serif'>&nbsp;—
+     every layer you studied maps directly to a section in the Wireshark Packet
+     Details pane. Understanding the model makes navigation intuitive.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l7 level1 lfo12;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Display filters are essential</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— a real-world PCAP can
+     have hundreds of thousands of packets. Filtering to only HTTP, or only
+     traffic from a suspicious IP, is the first step in any investigation.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l7 level1 lfo12;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Export Objects is a hidden gem</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;— files transferred in
+     cleartext over HTTP (and other protocols) can be extracted directly from
+     the PCAP. This is used in both incident response and malware analysis.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l7 level1 lfo12;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Statistics &gt; Capture File
+     Properties</span></strong><span style='font-family:"Segoe UI",sans-serif'>&nbsp;should
+     always be your first stop — it gives you the big picture before you dive
+     into individual packets.<o:p></o:p></span></li>
+</ol>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h2 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;border-bottom:rgba(209, 217, 224, 0.7)'
+tabindex=-1><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Where
+Would I See This in a SOC?<o:p></o:p></span></h2>
+
+<ul type=disc style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l12 level1 lfo13;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Phishing investigation:</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;Analyst receives a PCAP
+     from an endpoint. Uses display filters to isolate HTTP/HTTPS, follows TCP
+     streams to see what the user downloaded, exports objects to recover the
+     suspicious file.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l12 level1 lfo13;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Malware triage:</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;Uses&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>Statistics &gt; Protocol
+     Hierarchy</span></code><span style='font-family:"Segoe UI",sans-serif'>&nbsp;to
+     identify unusual protocols or high volumes of DNS traffic (potential DNS
+     tunnelling).<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-bottom-alt:auto;
+     mso-list:l12 level1 lfo13;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Credential exposure:</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;Filters for&nbsp;</span><code
+     style='box-sizing: border-box;tab-size: 4;white-space:break-spaces;
+     background-color:rgba(129, 139, 152, 0.12);border-radius: 6px'><span
+     style='font-size:10.0pt;font-family:Menlo'>ftp</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;or&nbsp;</span><span
+     class=SpellE><span class=GramE><code style='box-sizing: border-box;
+     tab-size: 4;white-space:break-spaces;background-color:rgba(129, 139, 152, 0.12);
+     border-radius: 6px'><span style='font-size:10.0pt;font-family:Menlo'>http.request</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Menlo'>.method</span></code></span><code><span
+     style='font-size:10.0pt;font-family:Menlo'> == POST</span></code><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;to identify cleartext
+     credentials submitted over unencrypted protocols.<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l12 level1 lfo13;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><strong style='box-sizing: border-box'><span
+     style='font-family:"Segoe UI",sans-serif'>Lateral movement detection:</span></strong><span
+     style='font-family:"Segoe UI",sans-serif'>&nbsp;Filters for SMB or unusual
+     internal traffic patterns to trace attacker movement inside a network.<o:p></o:p></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<h2 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white;box-sizing: border-box;border-bottom:rgba(209, 217, 224, 0.7)'
+tabindex=-1><span style='font-family:"Segoe UI",sans-serif;color:#1F2328'>Confidence
+Self-Assessment<o:p></o:p></span></h2>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;mso-yfti-tbllook:1184;box-sizing: border-box;
+ border-spacing: 0px;font-variant:tabular-nums;width:max-content;max-width:
+ 100%;overflow:auto'>
+ <thead style='box-sizing: border-box'>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;box-sizing: border-box;
+   border-top:rgba(209, 217, 224, 0.7)'>
+   <td style='border:solid #D1D9E0 1.0pt;mso-border-alt:solid #D1D9E0 .75pt;
+   background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'><markdown-accessiblity-table data-catalyst="" style="box-sizing: border-box; display: block; color: rgb(31, 35, 40); font-family: &quot;Mona Sans VF&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;">Skill</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>Before Room</span><o:p></o:p></b></p>
+   </td>
+   <td style='border:solid #D1D9E0 1.0pt;border-left:none;mso-border-left-alt:
+   solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+   padding:4.5pt 9.75pt 4.5pt 9.75pt'>
+   <p class=MsoNormal align=center style='margin-bottom:12.0pt;text-align:center'><b><span
+   style='color:black;mso-color-alt:windowtext'>After Room</span><o:p></o:p></b></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Navigating Wireshark UI</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>1/5</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>4/5</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:#F6F8FA;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Packet dissection by OSI layer</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>2/5</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>4/5</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;box-sizing: border-box;border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:white;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Writing display filters</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>1/5</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:white;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>3/5</span><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;box-sizing: border-box;
+  border-top:rgba(209, 217, 224, 0.7)'>
+  <td style='border:solid #D1D9E0 1.0pt;border-top:none;mso-border-top-alt:
+  solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;background:#F6F8FA;
+  padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>Exporting objects from PCAPs</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>1/5</span><o:p></o:p></p>
+  </td>
+  <td style='border-top:none;border-left:none;border-bottom:solid #D1D9E0 1.0pt;
+  border-right:solid #D1D9E0 1.0pt;mso-border-top-alt:solid #D1D9E0 .75pt;
+  mso-border-left-alt:solid #D1D9E0 .75pt;mso-border-alt:solid #D1D9E0 .75pt;
+  background:#F6F8FA;padding:4.5pt 9.75pt 4.5pt 9.75pt;box-sizing: border-box;
+  border-image: none 100% / 1 / 0 stretch'>
+  <p class=MsoNormal style='margin-bottom:12.0pt'><span style='color:black;
+  mso-color-alt:windowtext'>3/5</span><o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<div class=MsoNormal align=center style='margin-top:18.0pt;margin-right:0cm;
+margin-bottom:18.0pt;margin-left:0cm;text-align:center'><span style='mso-no-proof:
+yes'>
+
+<hr</markdown-accessiblity-table> size=0 width="100%" align=center>
+
+</span></div>
+
+<h2 style='margin-top:18.0pt;margin-right:0cm;margin-bottom:12.0pt;margin-left:
+0cm;background:white'><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'>References<o:p></o:p></span></h2>
+
+<ul type=disc style='box-sizing: border-box;font-variant-ligatures: normal;
+ font-variant-caps: normal;orphans: 2;text-align:start;widows: 2;-webkit-text-stroke-width: 0px;
+ text-decoration-thickness: initial;text-decoration-style: initial;text-decoration-color: initial;
+ word-spacing:0px'>
+ <li class=MsoNormal style='color:#1F2328;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo15;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'><a
+     href="https://www.wireshark.org/docs/" aria-label="Permalink: References"
+     style='box-sizing: border-box;background-color:rgba(0, 0, 0, 0);
+     text-underline-offset: 0.2rem;border-radius: 6px;opacity: 0;justify-content: center;
+     align-items: center;display:flex;transform: translateY(calc(-50% - 0.3rem));
+     float:left'><span style='color:#0969DA'>Wireshark Official Documentation</span></a><o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo15;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'>[Wireshark
+     Display Filter <span class=GramE>Reference](</span><a
+     href="https://www.wireshark.org/docs/" style='box-sizing: border-box;
+     background-color:rgba(0, 0, 0, 0);text-underline-offset: 0.2rem'><span
+     style='color:#0969DA'>https://www.wireshark.org/docs/</span></a>&nbsp;<span
+     class=SpellE>dfref</span>/)<o:p></o:p></span></li>
+ <li class=MsoNormal style='color:#1F2328;margin-top:3.0pt;mso-margin-bottom-alt:
+     auto;mso-list:l0 level1 lfo15;tab-stops:list 36.0pt;background:white;
+     box-sizing: border-box'><span style='font-family:"Segoe UI",sans-serif'><a
+     href="https://tryhackme.com/room/wiresharkthebasics" style='box-sizing: border-box;
+     background-color:rgba(0, 0, 0, 0);text-underline-offset: 0.2rem'><span
+     class=SpellE><span style='color:#0969DA'>TryHackMe</span></span><span
+     style='color:#0969DA'> Room</span></a><o:p></o:p></span></li>
+</ul>
+
+<div class=MsoNormal align=center style='margin-top:3.0pt;mso-margin-bottom-alt:
+auto;text-align:center;background:white'><span style='color:black;mso-color-alt:
+windowtext;mso-no-proof:yes'>
+
+<hr size=0 width="100%" align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:3.0pt;mso-margin-bottom-alt:auto;
+background:white'><em><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328;background:white'>Write-up by Kunal Dewani | GitHub: <span
+class=SpellE>kunal-dewani</span></span></em><span style='font-family:"Segoe UI",sans-serif;
+color:#1F2328'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-margin-bottom-alt:auto;background:white'><span
+style='font-family:"Segoe UI",sans-serif;color:#1F2328'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>
